@@ -24,14 +24,14 @@ app.use(express.static(path.join(__dirname, 'dist')));
 app.use('/api', api);
 
 // Connect to database
-MongoClient.connect("mongodb://localhost/database")
+MongoClient.connect("mongodb://localhost/nameOfYourDatabase")
 	.then(function (database) {
 		db = database;
 
-		db.collection("user").find().toArray()
+		db.collection("nameOfYourCollection").find().toArray()
 			.then(function (results) {
 				results.forEach(function (obj) {
-					console.log("ID : " + obj._id.toString() + " Name : " + obj.login + " Password : " + obj.password);
+					console.log("ID : " + obj._id.toString());
 				});
 			})
 			.catch(function (error) {
